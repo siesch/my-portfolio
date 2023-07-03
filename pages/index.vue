@@ -1,5 +1,11 @@
 <script setup>
 
+  const { data: posts } = await useAsyncData('posts', () =>
+    queryContent('/blog')
+      .sort({ date: 1 })
+      .limit(3)
+      .find()
+  )
 </script>
 
 <template>
